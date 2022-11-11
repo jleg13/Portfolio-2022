@@ -1,4 +1,7 @@
-html,
+html {
+  font-family: monospace;
+  background-color: #1e1b1b;
+}
 body {
   margin: 0;
   overflow: hidden;
