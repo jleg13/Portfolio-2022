@@ -1,0 +1,40 @@
+.App {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.site-code-button {
+  position: absolute;
+  z-index: 1;
+  top: 2em;
+  left: -0.6em;
+}
+.site-code-button button.ui i {
+  color: #1b1d1a;
+}
+.site-code-button button.ui i:hover {
+  transition: all 0.5s ease-out !important;
+  color: rgb(242, 237, 237);
+}
+.heading {
+  position: absolute;
+  z-index: 1;
+  bottom: 0.5em;
+  right: 0.5em;
+  font-size: 7rem;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  color: #686a63;
+  
+}
+.heading h1 {
+  border-bottom: #1b1d1a 0.2rem solid;
+  padding-bottom: 1em;
+  font-size: 3rem;
+}
+
+.heading h2 {
+  float: right;
+  color: #1b1d1a;
+  margin-top: 0;
+}

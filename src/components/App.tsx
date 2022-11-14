@@ -1,11 +1,16 @@
 import * as THREE from "three";
 import React, { useState, useEffect, useRef } from "react";
+import { Button } from "semantic-ui-react";
 import { Canvas, useFrame, extend, ReactThreeFiber } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import "../styles/styles.css";
 import { getRepos } from "../utils/githubData";
 import langColors from "../utils/github-lang-colors.json";
 import coords from "../coords.json";
+import SlideOutList from "./SlideOutList";
+import ProjectPreviewModal from "./Modal";
+import SocialList from "./SocialList";
+import { ProjectNode, KeyData } from "../types";
+import "../styles/App.css";
 
 extend({ Line_: THREE.Line });
 
@@ -15,16 +20,6 @@ declare global {
       line_: ReactThreeFiber.Object3DNode<THREE.Line, typeof THREE.Line>;
     }
   }
-}
-
-interface ProjectNode {
-  x: number;
-  y: number;
-  z: number;
-  color: string;
-  index: number;
-  name: string;
-  url: string;
 }
 
 function Node(props: ProjectNode) {
@@ -37,6 +32,7 @@ function Node(props: ProjectNode) {
 
   return (
     <mesh
+      scale={hovered ? 1.2 : 1}
       position={vec}
       ref={mesh}
       onClick={(e) => window.open(props.url, "_blank")}
@@ -44,7 +40,7 @@ function Node(props: ProjectNode) {
       onPointerOut={(e) => setHover(false)}
     >
       <sphereGeometry args={[0.1, 32, 32]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : props.color} />
+      <meshStandardMaterial color={hovered ? "#1dcd34" : props.color} />
     </mesh>
   );
 }
@@ -69,6 +65,8 @@ function Edge(props: { start: number[]; end: number[] }) {
 export default function App() {
   const [repos, setRepos] = useState([]);
   const [colors, setColors] = useState([]);
+  const [keyValues, setKeyValues] = useState<KeyData[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
 
   // get repos and languages for a user
   useEffect(() => {
@@ -87,10 +85,60 @@ export default function App() {
           return color;
         })
       );
+
+      const uniqueLangs = filteredRepos
+        .map((repo: { language: string }) => repo.language)
+        .filter((value: string, index: number, self: string[]) => {
+          return self.indexOf(value) === index;
+        });
+
+      const keyValues: KeyData[] = uniqueLangs.map((lang: string) => {
+        const color = langColors[lang as keyof typeof langColors];
+        return { label: lang, color };
+      });
+      setKeyValues(keyValues);
     })();
   }, []);
+
   return (
     <div className="App">
+      <div className="site-code-button">
+        <Button
+          icon={"code"}
+          size="huge"
+          style={{ backgroundColor: "#686a63" }}
+          onClick={() => setModalOpen(true)}
+        />
+      </div>
+      <ProjectPreviewModal 
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
+      <SocialList
+        data={[
+          {
+            icon: "linkedin",
+            url: "https://www.linkedin.com/in/joshua-le-gresley/",
+          },
+          {
+            icon: "github",
+            url: "https://github.com/jleg13",
+          },
+          {
+            icon: "at",
+            url: "mailto:joshualegresley@gmail.com",
+          },
+          {
+            icon: "globe",
+            url: "https://www.joshualegresley.me",
+          },
+        ]}
+      />
+      <SlideOutList data={keyValues} />
+      <div className="heading">
+        <h1>Joshua Le Gresley</h1>
+        <h2>Software Engineer</h2>
+      </div>
       <Canvas>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />

@@ -1,0 +1,20 @@
+{
+  "socials": [
+    {
+      "icon": "linkedin",
+      "url": "https://www.linkedin.com/in/joshua-le-gresley/"
+    },
+    {
+      "icon": "github",
+      "url": "https://github.com/jleg13"
+    },
+    {
+      "icon": "at",
+      "url": "mailto:joshualegresley@gmail.com"
+    },
+    {
+      "icon": "globe",
+      "url": "https://www.joshualegresley.me"
+    }
+  ]
+}

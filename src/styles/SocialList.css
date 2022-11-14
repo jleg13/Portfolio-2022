@@ -1,0 +1,16 @@
+.social-list {
+  position: absolute;
+  z-index: 1;
+  bottom: 1em;
+  left: 1em;
+}
+
+.social-list__item {
+  margin-bottom: 1.5em;
+}
+
+.social-list__item a .icon:hover  {
+  transition: all 0.5s ease-in-out !important;
+  color: rgb(242, 237, 237) !important;
+  margin-left: 0.2em !important;
+}

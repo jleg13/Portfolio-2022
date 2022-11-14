@@ -1,0 +1,40 @@
+.slide-out-list {
+  position: absolute;
+  z-index: 1;
+  top: 2em;
+  right: 1em;
+  color: #1b1d1a;
+}
+.slide-out-list__data {
+  margin-top: 0.5em;
+  margin-right: 2em;
+}
+.slide-out-list__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2em;
+  height: 2em;
+}
+
+.slide-out-list__button button.ui i {
+  color: #1b1d1a;
+}
+.slide-out-list__button button.ui i:hover {
+  transition: all 0.5s ease-out !important;
+  color: rgb(242, 237, 237) !important;
+}
+.key-enter {
+  transform: translateX(100%);
+}
+.key-enter-active {
+  transform: translateX(0);
+  transition: all 300ms ease-in;
+}
+.key-exit {
+  transform: translateX(0);
+}
+.key-exit-active {
+  transform: translateX(100%);
+  transition: all 300ms ease-out;
+}
