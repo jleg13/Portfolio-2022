@@ -27,11 +27,12 @@
 }
 
 .slide-out-list__button button.ui i {
+  transition: all 0.5s ease-out !important;
   color: #1b1d1a;
 }
 .slide-out-list__button button.ui i:hover {
   transition: all 0.5s ease-out !important;
-  color: rgb(242, 237, 237) !important;
+  color: rgb(222, 219, 219) !important;
 }
 .key-enter {
   transform: translateX(100%);

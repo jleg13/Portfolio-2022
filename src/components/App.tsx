@@ -69,6 +69,7 @@ export default function App() {
   const [colors, setColors] = useState([]);
   const [keyValues, setKeyValues] = useState<KeyData[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalUrl, setModalUrl] = useState("");
 
   // get repos and languages for a user
   useEffect(() => {
@@ -115,13 +116,18 @@ export default function App() {
             icon={"code"}
             size="huge"
             style={{ backgroundColor: "#686a63" }}
-            onClick={() => setModalOpen(true)}
+            onClick={() => {
+              setModalOpen(true)
+              setModalUrl("https://raw.githubusercontent.com/jleg13/Portfolio-Website/master/README.md")
+            }}
+            
           />
         </div>
       </CSSTransition>
       <ProjectPreviewModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
+        url={modalUrl}
       />
       <SocialList
         data={[

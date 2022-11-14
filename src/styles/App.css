@@ -20,11 +20,12 @@
   left: -0.6em;
 }
 .site-code-button button.ui i {
+  transition: all 0.5s ease-out !important;
   color: #1b1d1a;
 }
 .site-code-button button.ui i:hover {
   transition: all 0.5s ease-out !important;
-  color: rgb(242, 237, 237);
+  color: rgb(222, 219, 219) !important;
 }
 .heading {
   position: absolute;

@@ -7,3 +7,8 @@ export const getRepos = async (username: string) => {
   );
   return data;
 };
+
+export const getRawFile = async (repo: string, branch: string) => {
+  const { data } = await axios.get(`https://raw.githubusercontent.com/jleg13/${repo}/${branch}/README.md`);
+  return data;
+}

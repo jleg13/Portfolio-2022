@@ -19,4 +19,5 @@ export interface ProjectNode {
 export interface ModalProps {
   open: boolean;
   onClose: () => void;
+  url: string;
 }
