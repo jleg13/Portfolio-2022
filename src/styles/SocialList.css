@@ -1,3 +1,12 @@
+.social-list-transition-appear{
+  opacity: 0;
+  transform: translateY(200px);
+}
+.social-list-transition-appear-active{
+  opacity: 1;
+  transform: translateY(0px);
+  transition: opacity 300ms, transform 600ms;
+}
 .social-list {
   position: absolute;
   z-index: 1;
@@ -7,6 +16,10 @@
 
 .social-list__item {
   margin-bottom: 1.5em;
+}
+
+.social-list__item a .icon {
+  transition: all 0.3s ease-in-out !important;
 }
 
 .social-list__item a .icon:hover  {

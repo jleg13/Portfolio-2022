@@ -1,6 +1,7 @@
 import React from "react";
 import { SemanticICONS, Icon } from "semantic-ui-react";
 import "../styles/SocialList.css";
+import { CSSTransition } from "react-transition-group";
 
 interface SocialListProps {
   data: {
@@ -11,6 +12,12 @@ interface SocialListProps {
 
 export default function SocialList({ data }: SocialListProps) {
   return (
+    <CSSTransition
+      classNames={"social-list-transition"}
+      in={true}
+      appear={true}
+      timeout={800}
+    >
     <div className="social-list">
           {data.map((item, index) => {
             return (
@@ -26,6 +33,7 @@ export default function SocialList({ data }: SocialListProps) {
             );
           })}
     </div>
+    </CSSTransition>
   );
 }
            

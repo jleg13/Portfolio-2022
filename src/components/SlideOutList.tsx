@@ -8,6 +8,12 @@ export default function SlideOutList({ data }: { data: KeyDataList }) {
   const [showKey, setShowKey] = useState(false);
 
   return (
+    <CSSTransition
+      classNames={"slide-out-list-transition"}
+      in={true}
+      appear={true}
+      timeout={800}
+    >
     <div className="slide-out-list">
       <div className="slide-out-list__data">
         <CSSTransition
@@ -37,5 +43,6 @@ export default function SlideOutList({ data }: { data: KeyDataList }) {
         />
       </div>
     </div>
+    </CSSTransition>
   );
 }

@@ -3,6 +3,16 @@
   width: 100vw;
   height: 100vh;
 }
+.site-code-button-transition-appear {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+.site-code-button-transition-appear-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: opacity 300ms, transform 500ms ease-in-out
+}
+
 .site-code-button {
   position: absolute;
   z-index: 1;

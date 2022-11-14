@@ -1,5 +1,6 @@
 import * as THREE from "three";
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { CSSTransition } from "react-transition-group";
 import { Button } from "semantic-ui-react";
 import { Canvas, useFrame, extend, ReactThreeFiber } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -32,10 +33,11 @@ function Node(props: ProjectNode) {
 
   return (
     <mesh
-      scale={hovered ? 1.2 : 1}
+      scale={hovered ? 1.3 : 1}
       position={vec}
       ref={mesh}
-      onClick={(e) => window.open(props.url, "_blank")}
+      onClick={props.onClick}
+      // onClick={(e) => window.open(props.url, "_blank")}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}
     >
@@ -102,15 +104,22 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="site-code-button">
-        <Button
-          icon={"code"}
-          size="huge"
-          style={{ backgroundColor: "#686a63" }}
-          onClick={() => setModalOpen(true)}
-        />
-      </div>
-      <ProjectPreviewModal 
+      <CSSTransition
+        classNames={"site-code-button-transition"}
+        in={true}
+        appear
+        timeout={800}
+      >
+        <div className="site-code-button">
+          <Button
+            icon={"code"}
+            size="huge"
+            style={{ backgroundColor: "#686a63" }}
+            onClick={() => setModalOpen(true)}
+          />
+        </div>
+      </CSSTransition>
+      <ProjectPreviewModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
       />
@@ -137,7 +146,7 @@ export default function App() {
       <SlideOutList data={keyValues} />
       <div className="heading">
         <h1>Joshua Le Gresley</h1>
-        <h2>Software Engineer</h2>
+        <h2>Software Developer</h2>
       </div>
       <Canvas>
         <ambientLight />
@@ -153,6 +162,7 @@ export default function App() {
                   name: repo.name,
                   url: repo.html_url,
                   key: index,
+                  onClick: () => setModalOpen(true),
                 }}
               />
             );

@@ -13,6 +13,7 @@ export interface ProjectNode {
   index: number;
   name: string;
   url: string;
+  onClick: () => void;
 }
 
 export interface ModalProps {
