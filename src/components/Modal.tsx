@@ -45,14 +45,11 @@ const ProjectPreviewModal = ({ open, onClose, activeRepo }: ModalProps) => {
           <div className="modal-footer">
             <Button
               color="green"
-              onClick={onClose}
+              onClick={() => window.open(activeRepo.url, "_blank")}
               className="modal-close-button"
             >
               <Icon name="github" /> Go to Repository
-             </Button>
-            {/* <button onClick={onClose} className="modal-close-button">
-              Close
-            </button> */}
+            </Button>
           </div>
         </div>
       </div>

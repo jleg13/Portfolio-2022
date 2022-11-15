@@ -37,7 +37,6 @@ function Node(props: ProjectNode) {
       position={vec}
       ref={mesh}
       onClick={props.onClick}
-      // onClick={(e) => window.open(props.url, "_blank")}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}
     >
@@ -76,11 +75,9 @@ export default function App() {
     (async () => {
       const allRepos = await getRepos("jleg13");
       // filter by repos that have a language and sort by created_at keeping only 20 newest
-      const filteredRepos = allRepos.filter(
-        (repo: { language: null }) => {
-          return repo.language !== null;
-        }
-      );
+      const filteredRepos = allRepos.filter((repo: { language: null }) => {
+        return repo.language !== null;
+      });
       const sortedRepos = filteredRepos.sort(
         (a: { created_at: string }, b: { created_at: string }) => {
           return (
@@ -129,7 +126,11 @@ export default function App() {
             style={{ backgroundColor: "#686a63" }}
             onClick={() => {
               setModalOpen(true);
-              setActiveRepo({ name: "Portfolio-2022", branch: "main" });
+              setActiveRepo({
+                name: "Portfolio-2022",
+                branch: "main",
+                url: "https://github.com/jleg13/Portfolio-2022",
+              });
             }}
           />
         </div>
@@ -187,6 +188,7 @@ export default function App() {
                     setActiveRepo({
                       name: repo.name,
                       branch: repo.default_branch,
+                      url: repo.html_url,
                     });
                   },
                 }}

@@ -1,6 +1,7 @@
 export interface ActiveRepo {
   name: string;
   branch: string;
+  url: string;
 }
 
 export interface KeyData {
