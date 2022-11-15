@@ -10,7 +10,7 @@ import coords from "../coords.json";
 import SlideOutList from "./SlideOutList";
 import ProjectPreviewModal from "./Modal";
 import SocialList from "./SocialList";
-import { ProjectNode, KeyData } from "../types";
+import { ProjectNode, KeyData, ActiveRepo } from "../types";
 import "../styles/App.css";
 
 extend({ Line_: THREE.Line });
@@ -64,12 +64,14 @@ function Edge(props: { start: number[]; end: number[] }) {
   );
 }
 
+
+
 export default function App() {
   const [repos, setRepos] = useState([]);
   const [colors, setColors] = useState([]);
   const [keyValues, setKeyValues] = useState<KeyData[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalUrl, setModalUrl] = useState("");
+  const [activeRepo, setActiveRepo] = useState({} as ActiveRepo);
 
   // get repos and languages for a user
   useEffect(() => {
@@ -80,6 +82,8 @@ export default function App() {
         return repo.language !== null;
       });
       setRepos(filteredRepos);
+
+      console.log(filteredRepos);
 
       setColors(
         filteredRepos.map((repo: { language: string }) => {
@@ -117,17 +121,16 @@ export default function App() {
             size="huge"
             style={{ backgroundColor: "#686a63" }}
             onClick={() => {
-              setModalOpen(true)
-              setModalUrl("https://raw.githubusercontent.com/jleg13/Portfolio-Website/master/README.md")
+              setModalOpen(true);
+              setActiveRepo({ name: "Portfolio-2022", branch: "main" });
             }}
-            
           />
         </div>
       </CSSTransition>
       <ProjectPreviewModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
-        url={modalUrl}
+        activeRepo={activeRepo}
       />
       <SocialList
         data={[
@@ -158,7 +161,7 @@ export default function App() {
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         {repos.map(
-          (repo: { name: string; html_url: string }, index: number) => {
+          (repo: { name: string; html_url: string; default_branch: string }, index: number) => {
             return (
               <Node
                 {...{
@@ -167,10 +170,11 @@ export default function App() {
                   index,
                   name: repo.name,
                   url: repo.html_url,
+                  branch: repo.default_branch,
                   key: index,
                   onClick: () => {
                     setModalOpen(true);
-                    setModalUrl(repo.html_url);
+                    setActiveRepo({name: repo.name, branch: repo.default_branch});
                   },
                 }}
               />

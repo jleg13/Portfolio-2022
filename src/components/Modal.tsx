@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ReactMarkdown from "react-markdown";
-import gfm from "remark-gfm";
+// import gfm from "remark-gfm";
 import { CSSTransition } from "react-transition-group";
 import { ModalProps } from "../types";
 import "../styles/Modal.css";
 
-const ProjectPreviewModal = ({ open, onClose, url }: ModalProps) => {
+const ProjectPreviewModal = ({ open, onClose, activeRepo }: ModalProps) => {
   const [contentOpen, setContentOpen] = useState(false);
   const [content, setContent] = useState("");
 
   useEffect(() => {
     if (open) {
       fetch(
-        "https://raw.githubusercontent.com/jleg13/Portfolio-Website/master/README.md"
+        `https://raw.githubusercontent.com/jleg13/${activeRepo.name}/${activeRepo.branch}/README.md`
       )
         .then((res) => res.text())
         .then((text) => {
           setContent(text);
         });
     }
-  }, [open, url]);
+  }, [open, activeRepo]);
 
   return ReactDOM.createPortal(
     <CSSTransition

@@ -1,3 +1,8 @@
+export interface ActiveRepo {
+  name: string;
+  branch: string;
+}
+
 export interface KeyData {
   label: string;
   color: string;
@@ -13,11 +18,12 @@ export interface ProjectNode {
   index: number;
   name: string;
   url: string;
+  branch: string;
   onClick: () => void;
 }
 
 export interface ModalProps {
   open: boolean;
   onClose: () => void;
-  url: string;
+  activeRepo: ActiveRepo;
 }
