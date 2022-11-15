@@ -38,9 +38,6 @@ const ProjectPreviewModal = ({ open, onClose, url }: ModalProps) => {
           }`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="modal-header">
-            <h4>Projects</h4>
-          </div>
           <div className="modal-body">
             <ReactMarkdown children={content} />
           </div>

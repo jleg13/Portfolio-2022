@@ -168,7 +168,10 @@ export default function App() {
                   name: repo.name,
                   url: repo.html_url,
                   key: index,
-                  onClick: () => setModalOpen(true),
+                  onClick: () => {
+                    setModalOpen(true);
+                    setModalUrl(repo.html_url);
+                  },
                 }}
               />
             );
