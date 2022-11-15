@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 // import gfm from "remark-gfm";
 import { CSSTransition } from "react-transition-group";
 import { ModalProps } from "../types";
+import { Button, Icon } from "semantic-ui-react";
 import "../styles/Modal.css";
 
 const ProjectPreviewModal = ({ open, onClose, activeRepo }: ModalProps) => {
@@ -42,9 +43,16 @@ const ProjectPreviewModal = ({ open, onClose, activeRepo }: ModalProps) => {
             <ReactMarkdown children={content} />
           </div>
           <div className="modal-footer">
-            <button onClick={onClose} className="modal-close-button">
+            <Button
+              color="green"
+              onClick={onClose}
+              className="modal-close-button"
+            >
+              <Icon name="github" /> Go to Repository
+             </Button>
+            {/* <button onClick={onClose} className="modal-close-button">
               Close
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

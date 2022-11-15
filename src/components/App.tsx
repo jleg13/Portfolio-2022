@@ -64,8 +64,6 @@ function Edge(props: { start: number[]; end: number[] }) {
   );
 }
 
-
-
 export default function App() {
   const [repos, setRepos] = useState([]);
   const [colors, setColors] = useState([]);
@@ -77,23 +75,32 @@ export default function App() {
   useEffect(() => {
     (async () => {
       const allRepos = await getRepos("jleg13");
-
-      const filteredRepos = allRepos.filter((repo: { language: null }) => {
-        return repo.language !== null;
-      });
-      setRepos(filteredRepos);
-
-      console.log(filteredRepos);
+      // filter by repos that have a language and sort by created_at keeping only 20 newest
+      const filteredRepos = allRepos.filter(
+        (repo: { language: null }) => {
+          return repo.language !== null;
+        }
+      );
+      const sortedRepos = filteredRepos.sort(
+        (a: { created_at: string }, b: { created_at: string }) => {
+          return (
+            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+          );
+        }
+      );
+      const slicedRepos = sortedRepos.slice(0, 20);
+      setRepos(slicedRepos);
+      console.log(slicedRepos);
 
       setColors(
-        filteredRepos.map((repo: { language: string }) => {
+        slicedRepos.map((repo: { language: string }) => {
           const color =
             langColors[repo.language as keyof typeof langColors] || "#000";
           return color;
         })
       );
 
-      const uniqueLangs = filteredRepos
+      const uniqueLangs = slicedRepos
         .map((repo: { language: string }) => repo.language)
         .filter((value: string, index: number, self: string[]) => {
           return self.indexOf(value) === index;
@@ -161,7 +168,10 @@ export default function App() {
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         {repos.map(
-          (repo: { name: string; html_url: string; default_branch: string }, index: number) => {
+          (
+            repo: { name: string; html_url: string; default_branch: string },
+            index: number
+          ) => {
             return (
               <Node
                 {...{
@@ -174,7 +184,10 @@ export default function App() {
                   key: index,
                   onClick: () => {
                     setModalOpen(true);
-                    setActiveRepo({name: repo.name, branch: repo.default_branch});
+                    setActiveRepo({
+                      name: repo.name,
+                      branch: repo.default_branch,
+                    });
                   },
                 }}
               />
