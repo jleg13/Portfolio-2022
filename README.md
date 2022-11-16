@@ -3,10 +3,10 @@
 ## Project Description
 
 This 2022 portfolio site uses *React* and *3.js* to display my latest projects from Github. This is a single page application that has helped instill the knowledge I have gained over the last few months whilst undertaking courses in **React**, **Typescript** and **3.js**. Features include:
-  -3D Web element in react using *@react-three/fiber*
-  -Dynamic repository data collection using Github API
-  -CSS transitions/animations using *react-transition-group*
-  -Simplified UI development using some *Semantic UI components* 
+  - 3D Web element in react using *@react-three/fiber*
+  - Dynamic repository data collection using Github API
+  - CSS transitions/animations using *react-transition-group*
+  - Simplified UI development using some *Semantic UI components* 
 
 ## Deployment
 
