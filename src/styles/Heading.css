@@ -1,0 +1,78 @@
+.heading {
+  position: absolute;
+  z-index: 1;
+  bottom: 0.5em;
+  right: 0.5em;
+  font-size: 7rem;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  color: #686a63;
+}
+.heading h1 {
+  font-size: 3rem;
+  padding-bottom: 1rem;
+}
+
+.heading h2 {
+  float: right;
+  color: #1b1d1a;
+  margin-top: 0;
+}
+
+/* animation class and keyframes */
+
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+
+@keyframes lineDrawToLeft {
+  0% {
+    left: 100%;
+    width: 0;
+  }
+  100% {
+    left: 0;
+    width: 100%;
+  }
+}
+
+.seperator::after {
+  border-bottom: #1b1d1a 0.2rem solid;
+  padding-bottom: 1rem;
+  content: "";
+  width: 100%;
+  position: absolute;
+  top: 53%;
+  left: 0;
+  animation: lineDrawToLeft 500ms ease-in-out;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.slide-up {
+  animation: slide-up 800ms ease 400ms backwards;
+}
+
+.drop-in {
+  animation: drop-in 800ms ease 400ms backwards;
+}

@@ -10,6 +10,7 @@ import coords from "../coords.json";
 import SlideOutList from "./SlideOutList";
 import ProjectPreviewModal from "./Modal";
 import SocialList from "./SocialList";
+import Heading from "./Heading";
 import { ProjectNode, KeyData, ActiveRepo } from "../types";
 import "../styles/App.css";
 
@@ -113,6 +114,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <Heading heading="Joshua Le Gresley" subheading="Software Developer" />
       <CSSTransition
         classNames={"site-code-button-transition"}
         in={true}
@@ -161,10 +163,7 @@ export default function App() {
         ]}
       />
       <SlideOutList data={keyValues} />
-      <div className="heading">
-        <h1>Joshua Le Gresley</h1>
-        <h2>Software Developer</h2>
-      </div>
+
       <Canvas>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />

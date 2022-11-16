@@ -10,7 +10,7 @@
 .site-code-button-transition-appear-active {
   opacity: 1;
   transform: translateX(0px);
-  transition: opacity 300ms, transform 500ms ease-in-out
+  transition: opacity 300ms, transform 500ms ease-in-out;
 }
 
 .site-code-button {
@@ -26,26 +26,4 @@
 .site-code-button button.ui i:hover {
   transition: all 0.5s ease-out !important;
   color: rgb(222, 219, 219) !important;
-}
-.heading {
-  position: absolute;
-  z-index: 1;
-  bottom: 0.5em;
-  right: 0.5em;
-  font-size: 7rem;
-  letter-spacing: 0.2rem;
-  text-align: center;
-  color: #686a63;
-  
-}
-.heading h1 {
-  border-bottom: #1b1d1a 0.2rem solid;
-  padding-bottom: 1em;
-  font-size: 3rem;
-}
-
-.heading h2 {
-  float: right;
-  color: #1b1d1a;
-  margin-top: 0;
 }
