@@ -1,17 +1,18 @@
 import * as THREE from "three";
 import { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
-import { Button } from "semantic-ui-react";
+import { Button, SemanticICONS } from "semantic-ui-react";
 import { Canvas, useFrame, extend, ReactThreeFiber } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { getRepos } from "../utils/githubData";
 import langColors from "../utils/github-lang-colors.json";
 import coords from "../utils/coords.json";
+import socials from "../utils/social-data.json";
 import SlideOutList from "./SlideOutList";
 import ProjectPreviewModal from "./Modal";
 import SocialList from "./SocialList";
 import Heading from "./Heading";
-import { ProjectNode, KeyData, ActiveRepo } from "../types";
+import { ProjectNode, KeyData, ActiveRepo, SocialDataList } from "../types";
 import "../styles/App.css";
 
 extend({ Line_: THREE.Line });
@@ -70,6 +71,7 @@ export default function App() {
   const [keyValues, setKeyValues] = useState<KeyData[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [activeRepo, setActiveRepo] = useState({} as ActiveRepo);
+  const [socialData, setSocialData] = useState([] as SocialDataList);
 
   // get repos and languages for a user
   useEffect(() => {
@@ -108,6 +110,14 @@ export default function App() {
         return { label: lang, color };
       });
       setKeyValues(keyValues);
+
+      const socialData: SocialDataList = socials.data.map(
+        (item: { icon: string; url: string }) => {
+          const icon = item.icon as SemanticICONS;
+          return { icon, url: item.url };
+        }
+      );
+      setSocialData(socialData);
     })();
   }, []);
 
@@ -141,26 +151,7 @@ export default function App() {
         onClose={() => setModalOpen(false)}
         activeRepo={activeRepo}
       />
-      <SocialList
-        data={[
-          {
-            icon: "linkedin",
-            url: "https://www.linkedin.com/in/joshua-le-gresley/",
-          },
-          {
-            icon: "github",
-            url: "https://github.com/jleg13",
-          },
-          {
-            icon: "at",
-            url: "mailto:joshualegresley@gmail.com",
-          },
-          {
-            icon: "globe",
-            url: "https://www.joshualegresley.me",
-          },
-        ]}
-      />
+      <SocialList data={socialData} />
       <SlideOutList data={keyValues} />
 
       <Canvas>

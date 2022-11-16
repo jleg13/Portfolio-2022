@@ -1,15 +1,9 @@
-import { SemanticICONS, Icon } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 import "../styles/SocialList.css";
 import { CSSTransition } from "react-transition-group";
+import { SocialDataList } from "../types";
 
-interface SocialListProps {
-  data: {
-    icon: SemanticICONS;
-    url: string;
-  }[];
-}
-
-export default function SocialList({ data }: SocialListProps) {
+export default function SocialList({ data }: { data: SocialDataList }) {
   return (
     <CSSTransition
       classNames={"social-list-transition"}

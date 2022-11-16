@@ -1,8 +1,17 @@
+import { SemanticICONS } from "semantic-ui-react";
+
 export interface ActiveRepo {
   name: string;
   branch: string;
   url: string;
 }
+
+export interface SocialData {
+  icon: SemanticICONS;
+  url: string;
+}
+
+export interface SocialDataList extends Array<SocialData> {}
 
 export interface KeyData {
   label: string;
