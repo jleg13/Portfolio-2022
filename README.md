@@ -2,14 +2,11 @@
 
 ## Project Description
 
-This 2022 portfolio site uses *React* and *3.js* to display my latest projects from Github. This is a single page application that has helped instill the knowledge I have gained over the last few months whilst undertaking courses in React, Typescript and 3.js.
-
-was undertaken to develop a portfolio to showcase the projects and skills I have acquired. It was built whilst learning the 
-bootstrap framework and learning to use Sass to write the CSS styling. Features include:
-  -responsive design
-  -customised nav icon animation
-  -typewriter animation
-  -bootstrap image carousel to show casing projects
+This 2022 portfolio site uses *React* and *3.js* to display my latest projects from Github. This is a single page application that has helped instill the knowledge I have gained over the last few months whilst undertaking courses in **React**, **Typescript** and **3.js**. Features include:
+  -3D Web element in react using *@react-three/fiber*
+  -Dynamic repository data collection using Github API
+  -CSS transitions/animations using *react-transition-group*
+  -Simplified UI development using some *Semantic UI components* 
 
 ## Deployment
 
@@ -17,8 +14,9 @@ Currently deployed at [joshualegresley.dev](https://joshualegresley.dev).
 
 ## Built With
 
-* [Bootstrap](https://getbootstrap.com/) - Front-end framework
-* [Sass](https://sass-lang.com/) - CSS extension language
+![Typscript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Threejs](https://img.shields.io/badge/threejs-black?style=for-the-badge&logo=three.js&logoColor=white)
 
 ## Authors
 
