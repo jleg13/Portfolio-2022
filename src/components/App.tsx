@@ -6,8 +6,7 @@ import { Canvas, useFrame, extend, ReactThreeFiber } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { getRepos } from "../utils/githubData";
 import langColors from "../utils/github-lang-colors.json";
-import coords from "../coords.json";
-// import coords from "../utils/coords.json"
+import coords from "../utils/coords.json";
 import SlideOutList from "./SlideOutList";
 import ProjectPreviewModal from "./Modal";
 import SocialList from "./SocialList";
@@ -89,7 +88,6 @@ export default function App() {
       );
       const slicedRepos = sortedRepos.slice(0, 20);
       setRepos(slicedRepos);
-      console.log(slicedRepos);
 
       setColors(
         slicedRepos.map((repo: { language: string }) => {
