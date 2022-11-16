@@ -7,6 +7,7 @@ import { OrbitControls } from "@react-three/drei";
 import { getRepos } from "../utils/githubData";
 import langColors from "../utils/github-lang-colors.json";
 import coords from "../coords.json";
+// import coords from "../utils/coords.json"
 import SlideOutList from "./SlideOutList";
 import ProjectPreviewModal from "./Modal";
 import SocialList from "./SocialList";

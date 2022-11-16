@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ReactMarkdown from "react-markdown";
-// import gfm from "remark-gfm";
+import gfm from "remark-gfm";
 import { CSSTransition } from "react-transition-group";
 import { ModalProps } from "../types";
 import { Button, Icon } from "semantic-ui-react";
@@ -39,9 +39,9 @@ const ProjectPreviewModal = ({ open, onClose, activeRepo }: ModalProps) => {
           }`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="modal-body">
-            <ReactMarkdown children={content} />
-          </div>
+          
+            <ReactMarkdown children={content} remarkPlugins={[gfm]} />
+        
           <div className="modal-footer">
             <Button
               color="green"
