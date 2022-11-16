@@ -1,0 +1,24 @@
+.code-button-transition-appear {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+.code-button-transition-appear-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: opacity 300ms, transform 500ms ease-in-out;
+}
+
+.code-button {
+  position: absolute;
+  z-index: 1;
+  top: 2em;
+  left: -0.6em;
+}
+.code-button button.ui i {
+  transition: all 0.5s ease-out !important;
+  color: #1b1d1a;
+}
+.code-button button.ui i:hover {
+  transition: all 0.5s ease-out !important;
+  color: rgb(222, 219, 219) !important;
+}

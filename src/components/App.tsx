@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import { useState, useEffect, useRef } from "react";
-import { CSSTransition } from "react-transition-group";
-import { Button, SemanticICONS } from "semantic-ui-react";
+import { SemanticICONS } from "semantic-ui-react";
 import { Canvas, useFrame, extend, ReactThreeFiber } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { getRepos } from "../utils/githubData";
@@ -12,6 +11,7 @@ import SlideOutList from "./SlideOutList";
 import ProjectPreviewModal from "./Modal";
 import SocialList from "./SocialList";
 import Heading from "./Heading";
+import CustomButton from "./CustomButton";
 import { ProjectNode, KeyData, ActiveRepo, SocialDataList } from "../types";
 import "../styles/App.css";
 
@@ -124,28 +124,20 @@ export default function App() {
   return (
     <div className="App">
       <Heading heading="Joshua Le Gresley" subheading="Software Developer" />
-      <CSSTransition
-        classNames={"site-code-button-transition"}
-        in={true}
-        appear
-        timeout={800}
-      >
-        <div className="site-code-button">
-          <Button
-            icon={"code"}
-            size="huge"
-            style={{ backgroundColor: "#686a63" }}
-            onClick={() => {
-              setModalOpen(true);
-              setActiveRepo({
-                name: "Portfolio-2022",
-                branch: "main",
-                url: "https://github.com/jleg13/Portfolio-2022",
-              });
-            }}
-          />
-        </div>
-      </CSSTransition>
+      <CustomButton
+        icon={"code"}
+        size="huge"
+        style={{ backgroundColor: "#686a63" }}
+        onClick={() => {
+          setModalOpen(true);
+          setActiveRepo({
+            name: "Portfolio-2022",
+            branch: "main",
+            url: "https://github.com/jleg13/Portfolio-2022",
+          });
+        }}
+      />
+
       <ProjectPreviewModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
