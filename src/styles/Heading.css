@@ -1,8 +1,8 @@
 .heading {
   position: absolute;
   z-index: 1;
-  bottom: 0.5em;
-  right: 0.5em;
+  bottom: 0.3em;
+  right: 0.3em;
   font-size: 7rem;
   letter-spacing: 0.2rem;
   text-align: center;

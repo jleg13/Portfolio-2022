@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import "./styles/globals.css"
+import "./styles/responsive.css";
 import "semantic-ui-css/semantic.min.css";
 
 const root = ReactDOM.createRoot(

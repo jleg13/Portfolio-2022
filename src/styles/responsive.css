@@ -1,0 +1,64 @@
+@media (max-width: 768px) {
+  .heading {
+    bottom: 0.1em;
+    right: 0.2em;
+  }
+  .heading h1 {
+    font-size: 1.8rem;
+  }
+  
+  .heading h2 {
+    font-size: 1.2rem;
+  }
+
+  .seperator::after {
+    top: 45%;
+  }
+
+  .slide-out-list {
+    top: 4.3em;
+    right: 4em;
+    max-width: 80%;
+    font-size: 0.8rem;
+  }
+
+  .modal-content {
+    width: 70%;
+  }
+  .modal-content--active {
+    width: 80%;
+  }
+
+}@media (max-width: 480px) {
+  .heading {
+    bottom: 0.2em;
+    right: 0.2em;
+  }
+  .heading h1 {
+    font-size: 1.5rem;
+  }
+  
+  .heading h2 {
+    font-size: 1rem;
+  }
+
+  .seperator::after {
+    top: 42%;
+  }
+
+  .slide-out-list {
+    top: 4.3em;
+    right: 4em;
+    max-width: 80%;
+    font-size: 0.5rem;
+  }
+
+  .modal-content {
+    width: 80%;
+  }
+  .modal-content--active {
+    width: 80%;
+  }
+
+}
+
